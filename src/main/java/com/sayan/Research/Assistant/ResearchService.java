@@ -18,7 +18,30 @@ public class ResearchService {
         StringBuilder prompt = new StringBuilder();
         switch (req.getOperation()){
             case "summarize" :
-                prompt.append("Provide a clear and concise summary of the following text in a few sentences. \n\n");
+                prompt.append("""
+    Summarize the following text into 4-8 concise and informative bullet points.
+
+    Focus on the most important:
+    - Ideas
+    - Facts
+    - Findings
+    - Arguments
+    - Technical details
+    - Conclusions
+
+    Remove repetition and unnecessary details.
+    Preserve important names, numbers, technical terms, and concepts.
+    Do not add information that is not present in the text.
+
+    Return ONLY the bullet points.
+    Do not include an introduction, conclusion, or phrases such as
+    "Here is a summary".
+    Start every bullet point with "-".
+    Do not use Markdown bold, headings, or other formatting.
+
+    Text:
+
+    """);
                 break;
             case "suggest" :
                 prompt.append("Based on the following content suggest related topics and further readings , format the response with clear heading and bullet points. \n\n");
